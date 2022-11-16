@@ -6,3 +6,24 @@ database:
   password: "root"
   driver: "org.postgresql.Driver"
   modelPackage: "com.shrt.model"
+
+duid-attributes:
+  year: 2000
+  month: 1
+  day: 1
+  hour: 00
+  minute: 00
+  maxNodeId: 1024
+  initialBits: 41
+  totalBits: 64
+  nodeIdBits: 13
+  randomIdBound: 1024
+
+spring:
+  data:
+    cassandra:
+      keyspace-name: distributed_uid
+      port: 9042
+      local-datacenter: datacenter1
+      contact-points: 192.168.0.108
+
