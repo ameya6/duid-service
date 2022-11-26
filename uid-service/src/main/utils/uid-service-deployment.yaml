@@ -1,0 +1,71 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: uid-service-config
+data:
+  application.yml: |
+    server:
+      port: 9009
+    duid-attributes:
+      year: 2000
+      month: 1
+      day: 1
+      hour: 00
+      minute: 00
+      maxNodeId: 1024
+      initialBits: 41
+      totalBits: 64
+      nodeIdBits: 13
+      randomIdBound: 1024
+    event-db:
+      driver: "postgresql"
+      host: "192.168.0.103"
+      port: 5432
+      user: "postgres"
+      password: "password"
+      database: "distributed_uid"
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uid-service-depl
+spec:
+  selector:
+    matchLabels:
+      app: uid-service-depl
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: uid-service-depl
+    spec:
+      containers:
+        - name: uid-service-pod
+          image: ameya1/uid-service:latest
+          ports:
+            - containerPort: 9009
+          volumeMounts:
+            - name: uid-service-vol
+              mountPath: /config
+      volumes:
+        - name: uid-service-vol
+          configMap:
+            name: uid-service-config
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: uid-service-svc
+spec:
+  selector:
+    app: uid-service-depl
+  ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 9009
+  type: LoadBalancer
+
