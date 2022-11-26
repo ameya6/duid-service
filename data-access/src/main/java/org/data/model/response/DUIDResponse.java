@@ -1,15 +1,15 @@
 package org.data.model.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @AllArgsConstructor
 @Builder
 @Setter
 @Getter
+@ToString
 public class DUIDResponse {
     private Long duid;
     private String message;
+
+    public DUIDResponse() {}
 }
