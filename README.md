@@ -42,7 +42,9 @@
     *   Log4j2
 *   **Database**
     *   TimescaleDB
+        *   Logging events
     *   Elasticsearch
+        *   Logging response post spark testing
 *   **Deployment**
     *   Docker
     *   Kubernetes
