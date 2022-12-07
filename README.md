@@ -54,7 +54,7 @@
 
 ### Architecture Diagram
 
-![]([https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/dd3d6437787ae07d7a0d131ef465abfbf0270b20e1cc18b0.jpeg](https://user-images.githubusercontent.com/117295903/206181179-6a6bb055-e83c-4148-8127-4b3d684f8467.jpeg))
+![](https://user-images.githubusercontent.com/117295903/206181179-6a6bb055-e83c-4148-8127-4b3d684f8467.jpeg)
 
 ### Load Tests Result
 
